@@ -5,7 +5,7 @@
 package com.example.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -34,8 +35,8 @@ public class Concert implements Serializable{
     @JoinColumn(name="place_id")
     private Place place;
     
-    private String name;
-    private Date setting;
+    private String setting;
+    
     private double entrance_fee;
     private int max_aphorism;
     
@@ -64,19 +65,11 @@ public class Concert implements Serializable{
         this.place = place;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getSetting() {
+    public String getSetting() {
         return setting;
     }
 
-    public void setSetting(Date setting) {
+    public void setSetting(String setting) {
         this.setting = setting;
     }
 

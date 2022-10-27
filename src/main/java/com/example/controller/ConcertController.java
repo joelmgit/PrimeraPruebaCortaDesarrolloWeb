@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.controller;
 
 import com.example.entity.Artist;
@@ -10,8 +6,12 @@ import com.example.entity.Place;
 import com.example.service.IArtistService;
 import com.example.service.IConcertService;
 import com.example.service.IPlaceService;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,11 +22,16 @@ import org.springframework.web.bind.annotation.PostMapping;
  *
  * @author Joel Mora
  */
+@Controller
 public class ConcertController {
     
     @Autowired
     private IConcertService concertService;
+    
+    @Autowired
     private IPlaceService placeService;
+    
+    @Autowired
     private IArtistService artistService;
 
     
@@ -50,7 +55,7 @@ public class ConcertController {
     }
     
     @PostMapping("/save")
-    public String saveConcert(@ModelAttribute Concert concert){
+    public String saveConcert(@ModelAttribute Concert concert) throws Exception{
         concertService.saveConcert(concert);
         return "redirect:/events";
     }

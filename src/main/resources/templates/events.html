@@ -4,12 +4,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
+    <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <table>
+            <thead>
+              <tr>
+                <th scope="col">Artista</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Dirección del lugar</th>
+                <th scope="col">Fecha y hora</th>
+                <th scope="col">Costo de entrada</th>
+                <th scope="col">Aforo</th>
+                <th scope="col">Eliminar</th>                
+              </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="event : ${events}">
+                    <tr>
+                        <td th:text="${event.getArtist.getName}"></td>
+                        <td th:text="${event.getPlace.getName}"></td>
+                        <td th:text="${event.getPlace.getAddress}"></td>
+                        <td th:text="${event.getSetting}"></td>
+                        <td th:text="${event.getEntrance_fee}"></td>
+                        <td th:text="${event.getMax_aphorism}"></td>                    
+                        <td>
+                            <a th:href="@{/delete/{id}(id=${event.getId})}">Delete</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
     </body>
 </html>

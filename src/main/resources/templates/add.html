@@ -10,6 +10,58 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>            
+            <div> </div>            
+            <div>                
+                <!-------------------Esto es un Formulario--------------- -->                
+                <div class="container">                    
+                    <form th:object = "${concert}"                          
+                          th:action="@{/save}"                          
+                          method="POST"                          
+                          >                        
+                        <input type="hidden" th:field="*{id}">                        
+                        <div>                            
+                            <label for="entrance_fee">Precio de entrada</label>                            
+                            <div>                                
+                                <input type="number" th:field="*{entrance_fee}"  placeholder= "Precio de entrada" id="entrance_fee" aria-describedby="emailHelp">                            
+                            </div>                        
+                        </div>                        
+                        <div>                            
+                            <label for="max_aphorism">Aforo</label>                            
+                            <div>                                
+                                <input type="number" th:field="*{max_aphorism}"  placeholder= "Aforo" id="max_aphorism" aria-describedby="emailHelp">                            
+                            </div>                        
+                        </div>                        
+                        <div>                            
+                            <label for="setting">Fecha y hora del evento</label>                            
+                            <div>                                
+                                <input type="datetime-local" th:field="*{setting}" id="setting" name="setting"> 
+                            </div>                        
+                        </div>                                                                      
+                        <div>                            
+                            <label for="artist">Artista</label>                            
+                            <div>                                
+                                <select  th:field="*{artist}" id="artist" aria-describedby="emailHelp">                                    
+                                    <option th:each="x:${artists}"                                            
+                                            th:value="${x.id}"                                            
+                                            th:text="${x.name}"/>                                
+                                </select>                            
+                            </div>                        
+                        </div> 
+                        <div>                            
+                            <label for="place">Lugar</label>                            
+                            <div>                                
+                                <select  th:field="*{place}" id="place" aria-describedby="emailHelp">                                    
+                                    <option th:each="x:${places}"                                            
+                                            th:value="${x.id}"                                            
+                                            th:text="${x.name}"/>                                
+                                </select>                            
+                            </div>                        
+                        </div>   
+                        <button type="submit" value="Agregar evento">Submit</button>                    
+                    </form>                
+                </div>            
+            </div>        
+        </div>
     </body>
 </html>
